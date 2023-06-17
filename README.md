@@ -2,7 +2,7 @@
 
 ## Description
 
-### A Python program with flask and sqllite3 to encrypt and decrpyt a text usign RSA cryptography algorithm
+### A Python program with flask and sqllite3 to encrypt and decrpyt a text using RSA cryptography algorithm
 
 ## Usage
 
