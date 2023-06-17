@@ -3,6 +3,7 @@
 .flaskenv
 *.pyc
 *.pyo
+keys/
 env/
 venv/
 .venv/
@@ -25,4 +26,3 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
-*.pem

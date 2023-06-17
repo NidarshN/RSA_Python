@@ -6,7 +6,7 @@ from db import init_db
 
 app = Flask(__name__)
 
-keyfiles = [file for file in os.listdir() if file.endswith('.pem')]
+keyfiles = [file for file in os.listdir('./keys/') if file.endswith('.pem')]
 dbFile = [file for file in os.listdir() if file.endswith('.db')]
 if(len(dbFile) == 0 ):
     print('DB Created')
@@ -15,15 +15,15 @@ if(len(dbFile) == 0 ):
 publicKey, privateKey = None, None
 if(len(keyfiles) == 0):
     publicKey, privateKey = rsa.newkeys(512)
-    with open('publicKey.pem', 'wb+') as file:
+    with open('./keys/publicKey.pem', 'wb+') as file:
         pubKey = rsa.PublicKey.save_pkcs1(publicKey, format="PEM")
         file.write(pubKey)
-    with open('privateKey.pem', 'wb+') as file:
+    with open('./keys/privateKey.pem', 'wb+') as file:
         privKey = rsa.PrivateKey.save_pkcs1(privateKey, format="PEM")
         file.write(privKey)
 else:
-    publicKey = rsa.PublicKey.load_pkcs1(open('publicKey.pem').read())
-    privateKey = rsa.PrivateKey.load_pkcs1(open('privateKey.pem').read())
+    publicKey = rsa.PublicKey.load_pkcs1(open('./keys/publicKey.pem').read())
+    privateKey = rsa.PrivateKey.load_pkcs1(open('./keys/privateKey.pem').read())
 
 labelText = "Enter your text here:"
 DATABASE = 'encryption.db'
